@@ -15,16 +15,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialisation des dépendances
     final dio = Dio();
     final chatService = ChatService(dio: dio);
     final chatRepository = ChatRepository(chatService: chatService);
 
     return MaterialApp(
-      title: 'chat POC',
+      title: 'chatbot POC',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.dark(
+          primary: Color(0xFF3E1FAD),
+          secondary: Color(0xFF3E1FAD),
+          surface: Color(0xFF1A1A1A),
+        ),
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF3E1FAD),
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
         useMaterial3: true,
       ),
       home: BlocProvider(

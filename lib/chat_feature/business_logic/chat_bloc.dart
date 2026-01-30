@@ -14,7 +14,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<SendMessageEvent>(_chat);
   }
 
-  void _chat(SendMessageEvent event, Emitter<ChatState> emitter) async {
+  Future<void> _chat(SendMessageEvent event, Emitter<ChatState> emitter) async {
     emitter(ChatLoading());
     try {
       ChatResponse? chatResponse =

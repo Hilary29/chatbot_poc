@@ -1,22 +1,20 @@
 class ChatRequest {
-  final String? question;
-  final bool? includeSources;
+  final String? sender;
+  final String? message;
 
-  const ChatRequest({this.question, this.includeSources});
+  const ChatRequest({this.sender, this.message});
 
-    factory ChatRequest.fromJson(Map<String, dynamic> json) {
+  factory ChatRequest.fromJson(Map<String, dynamic> json) {
     return ChatRequest(
-      question: json['question'] as String?,
-      includeSources: json['includeSources'] as bool?,
+      sender: json['sender'] as String?,
+      message: json['message'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'question': question,
-      'includeSources': includeSources,
+      'sender': sender,
+      'message': message,
     };
   }
-
-
 }

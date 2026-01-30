@@ -1,26 +1,29 @@
+import 'package:chat_poc/chat_feature/data/models/chat_button.dart';
+
 class ChatResponse {
-  final String? answer;
-  final String? intent;
-  final List<String>? sources;
+  final String? recipientId;
+  final String? text;
+  final List<ChatButton>? buttons;
 
-  const ChatResponse({this.answer, this.intent, this.sources});
+  const ChatResponse({this.recipientId, this.text, this.buttons});
 
-    factory ChatResponse.fromJson(Map<String, dynamic> json) {
+  factory ChatResponse.fromJson(Map<String, dynamic> json) {
     return ChatResponse(
-      answer: json['answer'] as String?,
-      intent: json['intent'] as String?,
-      sources: json['sources'] != null
-          ? List<String>.from(json['sources'])
+      recipientId: json['recipient_id'] as String?,
+      text: json['text'] as String?,
+      buttons: json['buttons'] != null
+          ? (json['buttons'] as List)
+              .map((b) => ChatButton.fromJson(b))
+              .toList()
           : null,
     );
   }
 
-    Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
-      'answer': answer,
-      'intent': intent,
-      'sources': sources,
+      'recipient_id': recipientId,
+      'text': text,
+      'buttons': buttons?.map((b) => b.toJson()).toList(),
     };
   }
 }
-
