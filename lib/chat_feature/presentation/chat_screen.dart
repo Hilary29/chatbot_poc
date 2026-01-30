@@ -129,7 +129,9 @@ class _ChatScreenState extends State<ChatScreen> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          child: Text(button.title ?? ''),
+                          child: Text(
+                            button.title ?? '',
+                            style: TextStyle(fontSize: 12)),
                         );
                       }).toList(),
                     ),

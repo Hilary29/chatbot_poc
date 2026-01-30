@@ -8,7 +8,7 @@ class ChatService {
 
   Future<dynamic> sendMessage(ChatRequest request) async {
     final response = await dio.post(
-      "http://10.255.49.57:5005/webhooks/rest/webhook",
+      "http://192.168.1.221:5005/webhooks/rest/webhook",
       data: request.toJson(),
     );
     return response.data;
